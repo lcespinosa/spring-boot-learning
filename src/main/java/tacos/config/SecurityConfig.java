@@ -1,5 +1,6 @@
 package tacos.config;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,7 +38,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> {
                             try {
                                 authorize
-//                                        .requestMatchers("/design", "/orders").hasRole("USER")
+                                        .requestMatchers("/design", "/orders").hasRole("ROLE_USER")
                                         .requestMatchers("/", "/**").permitAll()
                                         .and()
                                             .formLogin()
@@ -50,4 +51,5 @@ public class SecurityConfig {
                 )
                 .build();
     }
+
 }
